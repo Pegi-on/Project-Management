@@ -1,14 +1,12 @@
 const express = require("express"); //nhúng express
 const app = express();
 const port = 3000;
+const routeClient = require("./routers/client/index.route");
 
-app.get("/", (req, res) => {
-  res.send("Trang chủ");
-});
+app.set("views", "./views");
+app.set("view engine", "pug"); //template engine sử dụng: pug
 
-app.get("/products", (req, res) => {
-  res.send("Trang danh sách sản phẩm");
-});
+routeClient.routeClient(app);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
